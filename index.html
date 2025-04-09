@@ -20,38 +20,14 @@
     //const blynkUrl = `http://iot.serangkota.go.id:8080/{blynkApiKey}/get/V0`;
     const blynkUrl = `http://iot.serangkota.go.id:8080/hiF1yslkUaMM9_kqS1Xki4A_XJMZRzs5/get/V0`;
 
-    // Fungsi untuk mengambil data dari Blynk
-    // function getCounterValue() {
-    //   $.get(blynkUrl, function(data) {
-    //     // Menampilkan nilai counter di halaman
-    //     $('#counter-value').text(data);
-    //   }). fail(function() {
-    //     // Jika ada error dalam permintaan, tampilkan pesan error
-    //     $('#counter-value').text('Error fetching data');
-    //   });
-    // }
-
-
-
-        // Fungsi untuk mengambil data dari API Blynk
+    Fungsi untuk mengambil data dari Blynk
     function getCounterValue() {
-      // Menggunakan jQuery untuk melakukan permintaan HTTP GET ke API Blynk
       $.get(blynkUrl, function(data) {
-        // Cek apakah data bisa diparse sebagai angka
-        let value = parseFloat(data);
-        
-        if (!isNaN(value)) {
-          // Format angka menjadi 3 angka di belakang koma
-          value = value.toFixed(2);
-        } else {
-          value = 'Invalid data';
-        }
-
-        // Menampilkan nilai yang sudah diformat ke dalam div dengan id counter-value
-        $('#counter-value').text(value);
-      }).fail(function() {
+        // Menampilkan nilai counter di halaman
+        $('#counter-value').text(data);
+      }). fail(function() {
         // Jika ada error dalam permintaan, tampilkan pesan error
-        $('#counter-value').text('Error fetching data2');
+        $('#counter-value').text('Error fetching data3');
       });
     }
 
