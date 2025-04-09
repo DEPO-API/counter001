@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blynk Counter</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+  <h1>Nilai Counter Blynk</h1>
+  <div id="counter-value">Loading...</div>
+
+  <script>
+    // Ganti dengan API Key kamu
+    const blynkApiKey = 'hiF1yslkUaMM9_kqS1Xki4A_XJMZRzs5';
+    //const blynkDeviceId = 'YOUR_DEVICE_ID'; // Ganti dengan ID perangkatmu jika diperlukan
+
+    // URL API untuk mendapatkan nilai counter
+    const blynkUrl = `https://blynk.cloud/external/api/get?token=${blynkApiKey}&pin=V0`;
+
+    // Fungsi untuk mengambil data dari Blynk
+    function getCounterValue() {
+      $.get(blynkUrl, function(data) {
+        // Menampilkan nilai counter di halaman
+        $('#counter-value').text(data);
+      });
+    }
+
+    // Ambil data counter setiap 500 ms
+    setInterval(getCounterValue, 500);
+    getCounterValue(); // Ambil data pertama kali saat halaman dimuat
+  </script>
+</body>
+</html>
