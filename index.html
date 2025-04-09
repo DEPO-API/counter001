@@ -25,6 +25,9 @@
       $.get(blynkUrl, function(data) {
         // Menampilkan nilai counter di halaman
         $('#counter-value').text(data);
+      }). fail(function() {
+        // Jika ada error dalam permintaan, tampilkan pesan error
+        $('#counter-value').text('Error fetching data');
       });
     }
 
