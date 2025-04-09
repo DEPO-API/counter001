@@ -8,7 +8,7 @@
 </head>
 <body>
   <h1>Data dari Blynk API</h1>
-  <p>Nilai dari Pin V0:</p>
+  <p>Nilai dari Pin V0 (float):</p>
   <div id="counter-value">Loading...</div>
 
   <script>
@@ -19,11 +19,19 @@
     function getBlynkData() {
       // Menggunakan jQuery untuk melakukan permintaan HTTP GET ke API Blynk
       $.get(blynkApiUrl, function(data) {
-        // Menampilkan data yang diterima di dalam div dengan id counter-value
-        $('#counter-value').text(data);
+        // Mengubah data yang diterima menjadi tipe float
+        let value = parseFloat(data);
+
+        // Cek apakah nilai valid sebagai float
+        if (!isNaN(value)) {
+          // Menampilkan data float yang diperoleh dari API
+          $('#counter-value').text(value);
+        } else {
+          $('#counter-value').text('Invalid data');
+        }
       }).fail(function() {
         // Jika ada error dalam permintaan, tampilkan pesan error
-        $('#counter-value').text('Error fetching data');
+        $('#counter-value').text('Error fetching data5');
       });
     }
 
