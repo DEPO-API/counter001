@@ -3,37 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Counter001</title>
+  <title>Display Blynk Data</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-  <h1>Nilai Counter</h1>
+  <h1>Data dari Blynk API</h1>
+  <p>Nilai dari Pin V0:</p>
   <div id="counter-value">Loading...</div>
 
   <script>
-    // Ganti dengan API Key kamu
-    const blynkApiKey = 'hiF1yslkUaMM9_kqS1Xki4A_XJMZRzs5';
-    //const blynkDeviceId = 'YOUR_DEVICE_ID'; // Ganti dengan ID perangkatmu jika diperlukan
+    // URL API Blynk
+    const blynkApiUrl = "http://iot.serangkota.go.id:8080/hiF1yslkUaMM9_kqS1Xki4A_XJMZRzs5/get/V0";
 
-    // URL API untuk mendapatkan nilai counter
-    //const blynkUrl = `https://blynk.cloud/external/api/get?token=${blynkApiKey}&pin=V0`;
-    //const blynkUrl = `http://iot.serangkota.go.id:8080/{blynkApiKey}/get/V0`;
-    const blynkUrl = "http://iot.serangkota.go.id:8080/hiF1yslkUaMM9_kqS1Xki4A_XJMZRzs5/get/V0";
-
-    // Fungsi untuk mengambil data dari Blynk
-    function getCounterValue() {
-      $.get(blynkUrl, function(data) {
-        // Menampilkan nilai counter di halaman
+    // Fungsi untuk mengambil data dari API Blynk
+    function getBlynkData() {
+      // Menggunakan jQuery untuk melakukan permintaan HTTP GET ke API Blynk
+      $.get(blynkApiUrl, function(data) {
+        // Menampilkan data yang diterima di dalam div dengan id counter-value
         $('#counter-value').text(data);
-      }). fail(function() {
+      }).fail(function() {
         // Jika ada error dalam permintaan, tampilkan pesan error
-        $('#counter-value').text('Error fetching data4');
+        $('#counter-value').text('Error fetching data');
       });
     }
 
-    // Ambil data counter setiap 500 ms
-    setInterval(getCounterValue, 1000);
-    getCounterValue(); // Ambil data pertama kali saat halaman dimuat
+    // Panggil fungsi untuk mendapatkan data dari Blynk saat halaman dimuat
+    getBlynkData();
+
+    // Ambil data setiap 1 detik untuk memperbarui nilai secara otomatis
+    setInterval(getBlynkData, 1000);
   </script>
 </body>
 </html>
