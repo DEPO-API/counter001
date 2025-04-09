@@ -16,7 +16,8 @@
     //const blynkDeviceId = 'YOUR_DEVICE_ID'; // Ganti dengan ID perangkatmu jika diperlukan
 
     // URL API untuk mendapatkan nilai counter
-    const blynkUrl = `https://blynk.cloud/external/api/get?token=${blynkApiKey}&pin=V0`;
+    //const blynkUrl = `https://blynk.cloud/external/api/get?token=${blynkApiKey}&pin=V0`;
+    const blynkUrl = `http://iot.serangkota.go.id:8080/{blynkApiKey}/get/V0`;
 
     // Fungsi untuk mengambil data dari Blynk
     function getCounterValue() {
