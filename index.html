@@ -8,30 +8,22 @@
 </head>
 <body>
   <h1>Data dari Blynk API</h1>
-  <p>Nilai dari Pin V0 (float):</p>
+  <p>Nilai dari Pin V0:</p>
   <div id="counter-value">Loading...</div>
 
   <script>
     // URL API Blynk
-    const blynkApiUrl = 'http://iot.serangkota.go.id:8080/hiF1yslkUaMM9_kqS1Xki4A_XJMZRzs5/get/V0';
+    const blynkApiUrl = "http://iot.serangkota.go.id:8080/hiF1yslkUaMM9_kqS1Xki4A_XJMZRzs5/get/V0";
 
     // Fungsi untuk mengambil data dari API Blynk
     function getBlynkData() {
       // Menggunakan jQuery untuk melakukan permintaan HTTP GET ke API Blynk
       $.get(blynkApiUrl, function(data) {
-        // Mengubah data yang diterima menjadi tipe float
-        let value = parseFloat(data);
-
-        // Cek apakah nilai valid sebagai float
-        if (!isNaN(value)) {
-          // Menampilkan data float yang diperoleh dari API
-          $('#counter-value').text(value);
-        } else {
-          $('#counter-value').text('Invalid data');
-        }
+        // Menampilkan data yang diterima di dalam div dengan id counter-value
+        $('#counter-value').text(data);
       }).fail(function() {
         // Jika ada error dalam permintaan, tampilkan pesan error
-        $('#counter-value').text('Error fetching data6');
+        $('#counter-value').text('Error fetching data');
       });
     }
 
